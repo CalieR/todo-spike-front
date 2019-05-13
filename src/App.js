@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
+import Uploader from "./components/Uploader";
+import AllTodos from "./components/AllTodos";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const TODOS_URL = "http://localhost:3002/todos";
+
+class App extends Component {
+  state = {
+    todos: []
+  };
+
+  componentDidMount = () => {
+    return fetch(TODOS_URL)
+      .then(resp => resp.json())
+      .then(jso =>
+        this.setState({
+          todos: jso
+        })
+      );
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Homepage</h1>
+        <AllTodos todos={this.state.todos} />
+        <Uploader />
+      </div>
+    );
+  }
 }
 
 export default App;
