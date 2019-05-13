@@ -1,8 +1,10 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## todo-spike-front
 
-In the project directory, you can run:
+test react frontend with rails active storage backend
+
+---
 
 ### `npm start`
 
